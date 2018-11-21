@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Root from 'Root';
-import CommentBox from 'components/CommentBox';
+import Root from '../../Root';
+import CommentBox from '../CommentBox';
 
 let wrapped;
 
@@ -20,7 +20,7 @@ afterEach(() => {
 
 it('should display a textarea and a button', () => {
   expect(wrapped.find('textarea').length).toEqual(1);
-  expect(wrapped.find('button').length).toEqual(1);
+  expect(wrapped.find('button.submit').length).toEqual(1);
 });
 
 describe('textarea', () => {

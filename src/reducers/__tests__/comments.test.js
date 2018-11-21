@@ -1,4 +1,4 @@
-import commentsReducer from 'reducers/comments';
+import commentsReducer from '../comments';
 import { ADD_COMMENT } from "../../actions/types";
 
 it('handles actions of type ADD_COMMENT', () => {

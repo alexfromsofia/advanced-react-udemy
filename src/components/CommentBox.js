@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from 'actions';
+import * as actions from '../actions';
 
 class CommentBox extends Component {
   state = { comment: '' };
@@ -12,8 +12,7 @@ class CommentBox extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // debugger
-    // this.props.addComment(this.state.comment);
+    this.props.addComment(this.state.comment);
 
     this.setState({ comment: '' })
   }
@@ -28,15 +27,23 @@ class CommentBox extends Component {
 
         />
         <div>
-          <button type="submit">Submit content</button>
+          <button 
+            className="submit" 
+            type="submit">
+              Submit content
+          </button>
+        </div>
+        <div>
+          <button 
+            className="fetch-comments"
+            type="button" 
+            onClick={this.props.fetchComments}>
+              Fetch comments
+          </button>
         </div>
       </form>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  comments: state.comments
-});
-
-export default connect(mapStateToProps, { actions })(CommentBox);
+export default connect(null, actions)(CommentBox);
