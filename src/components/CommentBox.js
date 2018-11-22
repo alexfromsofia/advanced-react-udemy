@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import AuthHOC from './AuthHOC';
 import * as actions from '../actions';
 
 class CommentBox extends Component {
@@ -15,6 +16,7 @@ class CommentBox extends Component {
     this.props.addComment(this.state.comment);
 
     this.setState({ comment: '' })
+    this.props.history.push('/');
   }
 
   render() {
@@ -46,4 +48,6 @@ class CommentBox extends Component {
   }
 }
 
-export default connect(null, actions)(CommentBox);
+const mapStateToProps = state => ({ auth: state.auth });
+
+export default connect(mapStateToProps, actions)(AuthHOC(CommentBox));
